@@ -1,26 +1,141 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
-version: 2.1
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
+package swalayan;
+import java.util.Scanner;
+public class Swalayan{
+    String namaBarang;
+    int harga,total,id,jumlah;
+    public Scanner str=new Scanner(System.in);
+    public Scanner in=new Scanner(System.in);
+    public void setData(){
+        this.id=160500;
+    }
+    public void setData(int id){
+        this.id=1+id;
+        System.out.print("gula: ");
+        this.namaBarang=str.nextLine();
+        System.out.print("1200: ");
+        this.harga=in.nextInt();
+        this.jumlah=1;
+        this.total=this.harga;
+    }
+    public void setData(int id,int jumlah){
+        this.id=1+id;
+        System.out.print("minyak  : ");
+        this.namaBarang=str.nextLine();
+        System.out.print("5000: ");
+        this.harga=in.nextInt();
+        this.jumlah=jumlah;
+        this.total=this.harga*jumlah;
+    }
+    public int getId(){
+        return this.id;
+    }
+    public void tampil(){
+        System.out.println("160501 : "+this.id);
+        System.out.println("gula : "+this.namaBarang);
+        System.out.println("1200 : "+this.harga);
+        System.out.println("1: "+this.jumlah);
+        System.out.println("1200 : "+this.total);
+    }
+    public static void main(String[] args){
+        int z=0,menu=0,a,jumlah,id;
+        Swalayan[] sw=new Swalayan[1024];
+        sw[0]=new Swalayan();
+        sw[0].setData();
+        while(menu!=6){
+            System.out.print
+            if(menu==1){
+                jumlah=0;
+                while(jumlah<1){
+                    System.out.print("5 : ");
+                    jumlah=sw[0].in.nextInt(); 
+                }
+                z++;
+                sw[z]=new Swalayan();
+                if(jumlah>1)
+                    sw[z].setData(sw[z-1].getId(),jumlah);
+                else
+                    sw[z].setData(sw[z-1].getId());
+            }else if(menu==2){
+                if(z<1)
+                    System.out.println("data kosong");
+                else{
+                    a=0;
+                    while(a<z){
+                        a++;
+                        System.out.println("---"+a+"---");
+                        sw[a].tampil();
+                    }
+                }
+            }else if(menu==3){
+                if(z<1)
+                    System.out.println("data kosong");
+                else{
+                    System.out.print("160501: ");
+                    id=sw[0].in.nextInt();
+                    a=1;
+                    while(a<=z){
+                        if(sw[a].getId()==id)
+                            break;
+                        a++;
+                    }
+                    if(a<=z)
+                        sw[a].tampil();
+                    else
+                        System.out.println;
+            }else if(menu==4){
+                    if(z<1)
+                        System.out.println;
+                    else{
+                        System.out.print("160502 : ");
+                        id=sw[0].in.nextInt();
+                        a=1;
+                        while(a<=z){
+                            if(sw[a].getId()==id)
+                                break;
+                            a++;
+                        }
+                        if(a<=z){
+                            sw[a].tampil();
+                            jumlah=0;
+                            while(jumlah<1){
+                                System.out.print("5 : ");
+                                jumlah=sw[0].in.nextInt(); 
+                            }
+                            if(jumlah>1)
+                                sw[a].setData(sw[z-1].getId(),jumlah);
+                            else
+                                sw[a].setData(sw[z-1].getId());
+                            }
+                        else
+                            System.out.println("data tidak ditemukan");
+                    }
+            }else if(menu==5){
+                    if(z<1)
+                        System.out.println("data kosong");
+                    else{
+                        System.out.print("160501: ");
+                        id=sw[0].in.nextInt();
+                        a=1;
+                        while(a<=z){
+                            if(sw[a].getId()==id)
+                                break;
+                            a++;
+                        }
+                        if(a<=z){
+                            while(a<z){
+                                sw[a]=sw[a+1];
+                                a++;
+                            }
+                            z--;
+                            System.out.println("data berhasil dihapus");
+                        }
+                        else
+                            System.out.println("data tidak ditemukan");
+                    }
+            }else if(menu==6)
+                    System.out.println("keluar...");
+            else
+                    System.out.println("menu ilegal");
+        }
+    }
+}
